@@ -125,6 +125,11 @@ select {
     background-color: transparent;
 }
 
+.value {
+    display: flex;
+    width: 343px;
+}
+
 .buttonParent {
     display: flex;
     margin-bottom: 10px;
