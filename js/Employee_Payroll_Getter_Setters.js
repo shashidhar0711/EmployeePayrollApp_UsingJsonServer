@@ -8,16 +8,16 @@ class EmployeePayrollData {
     get name() { return this._name; }
     set name(name) {
         let nameRegex = RegExp('[A-Z]{1}[a-z]{2,}$');
-        if(nameRegex.test(firsName)) {
+        if(nameRegex.test(name)) {
             this._name = name;
         } else {
             throw "Name is InCorrect!"
         }
     }
 
-    get profilePic() { return this.profilePic; }
-    set profilePic(profilePic) {
-        this._profilePic = profilePic;
+    get profile() { return this._profile; }
+    set profile(profile) {
+        this._profile = profile;
     }
 
     get gender() { return this._gender; }
@@ -42,10 +42,11 @@ class EmployeePayrollData {
 
     get startDate() { return this._startDate; }
     set startDate(startDate) {
-        if(startDate <= new Date()) {
-            this._startDate = startDate;
-        } else {
+        let current = new Date();
+        if(startDate > current) {
             throw "Given date is future date";
+        } else {
+            this._startDate = startDate;
         }
     }
 
@@ -55,9 +56,11 @@ class EmployeePayrollData {
                         this.startDate.toLocaleDateString("en-US", options);
         return "Id : " + this.id 
                 + ", Name : " + this.name 
-                + ", profilePic : " + this.profilePic 
+                + ", profile : " + this.profile 
                 + ", Gender : " + this.gender
                 + ", Department : " + this.department
-                + ", Salary : " + this.salary + "Notes : " + this.notes;
+                + ", Salary : " + this.salary 
+                + ", StartDate : " + empDate
+                + ", Notes : " + this.notes;
     }
 }
